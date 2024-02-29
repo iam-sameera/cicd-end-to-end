@@ -54,6 +54,8 @@ pipeline {
                         cat deploy.yaml
                         sed -i "s|devopswithsam/cicd-e2e:[0-9]*|devopswithsam/cicd-e2e:${BUILD_NUMBER}|g" deploy.yaml
                         cat deploy.yaml
+                        git config --global credential.username "$GIT_USERNAME"
+                        git config --global credential.helper '!echo "$GIT_PASSWORD"'
                         git add deploy.yaml
                         git commit -m 'Updated the deploy yaml | Jenkins Pipeline'
                         git remote -v
