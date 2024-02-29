@@ -51,7 +51,7 @@ pipeline {
                 script{
                     withCredentials([usernamePassword(credentialsId: 'cdf2b1ac-964c-43a1-a542-52030e361ca4', passwordVariable: 'GIT_PASSWORD', usernameVariable: 'GIT_USERNAME')]) {
                         sh '''
-                        cat deploy.yaml
+                        cat deploy.yml
                         sed -i '' "s/32/${BUILD_NUMBER}/g" deploy.yml
                         cat deploy.yml
                         git add deploy.yml
